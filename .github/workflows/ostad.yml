@@ -11,7 +11,10 @@ jobs:
   read_the_file:
     runs-on: ubuntu-latest
     steps:
-      -name: sudo apt update && upgrade -y
+      - name: sudo apt update && upgrade 
+        run: |
+          sudo apt update
+          sudo apt upgrade -y
       - name: git clone
         uses: actions/checkout@v2
       - name: read the file
