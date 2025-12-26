@@ -1,0 +1,18 @@
+name: "Ostad Workflow CI/CD Pipeline"
+on:
+  push:
+    branches:
+      - main
+      - 'release/*'
+  pull_request:
+    branches:
+      - main
+jobs:
+  read_the_file:
+    runs-on: ubuntu-latest
+    steps:
+      -name: sudo apt update && upgrade -y
+      - name: git clone
+        uses: actions/checkout@v2
+      - name: read the file
+        run: cat hanif.txt
