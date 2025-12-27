@@ -19,12 +19,15 @@ jobs:
       - name: Node version check
         run: node -v
       - name: Install dependencies
-        run: npm install 
+        run: npm install
       - name: Build the project
         run: npm run build
-      - name: pm2 install
-        run: npm install pm2 -g
-      - name: pm2 start
-        run: pm2 start npm --name "ostad-app" -- run dev
-      - name: read the file
+
+      - name: Install PM2
+        run: npm install -g pm2
+
+      - name: Start app with PM2
+        run: pm2 start npm --name "ostad-app" -- run start
+
+      - name: Read file
         run: cat hanif.txt
