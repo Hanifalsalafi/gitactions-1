@@ -10,9 +10,19 @@ on:
 jobs:
   read_the_file:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: git clone
         uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+      - name: Node version check
+        run: node -v
+      - name: npm run build
+        run: npm run dev
+      - name: pm2 install
+        run: npm install pm2 -g
+      - name: pm2 start
+        run: pm2 start npm --name "ostad-app" -- run dev
       - name: read the file
         run: cat hanif.txt
