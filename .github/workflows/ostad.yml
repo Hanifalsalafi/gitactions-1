@@ -9,7 +9,7 @@ on:
       - main
 jobs:
   read_the_file:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: git clone
