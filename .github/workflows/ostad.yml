@@ -8,22 +8,14 @@ on:
     branches:
       - main
 jobs:
-  read_the_file:
+  Intall Nginx:
     runs-on: self-hosted
-
     steps:
-      - name: git clone
-        uses: actions/checkout@v2
-      - name: Install Node.js
-        uses: actions/setup-node@v6
-      - name: Node version check
-        run: node -v
-      - name: Install nginx
-        run: sudo apt-get install nginx -y
-      - name: Install PM2
-        run: npm install -g pm2
-
-      - name: Start app with PM2
-        run: pm2 start "npm run den" --name="nginx 3000"
-
-    
+      - name: Install Nginx
+        run: |
+          sudo apt update
+          sudo apt install nginx -y
+      - name: Start Nginx
+        run: |
+          sudo systemctl start nginx
+          sudo systemctl enable nginx
