@@ -11,13 +11,5 @@ jobs:
   Intall Nginx:
     runs-on: self-hosted
     steps:
-      - name: Git clone
-        uses: actions/checkout@v3
       - name: Install Nginx
-        run: |
-          sudo apt update
-          sudo apt install nginx -y
-      - name: Start Nginx
-        run: |
-          sudo systemctl start nginx
-          sudo systemctl enable nginx
+        run: sudo apt install nginx -y
