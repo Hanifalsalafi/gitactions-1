@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v6
       - name: Node version check
         run: node -v
+      - name: Install nginx
+        run: sudo apt-get install nginx -y
       - name: Install PM2
         run: npm install -g pm2
 
