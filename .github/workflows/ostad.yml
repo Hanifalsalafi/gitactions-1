@@ -21,7 +21,7 @@ jobs:
 
   Deploy:
     runs-on: self-hosted
-    deprnds-on: Test
+    needs: Test
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
