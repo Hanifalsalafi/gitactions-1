@@ -1,16 +1,37 @@
 name: "Ostad Workflow CI/CD Pipeline"
-
+#Toger Portion
 on:
   push:
     branches:
       - main
+      - dev 
   pull_request:
     branches:
       - main.
-
+#Jobs Section
 jobs:
-  Setup_Nginx:
+  Test:
+    runs-on: ubuntu-latest
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: install Dependencies
+      run: npm install
+
+  Deploy:
     runs-on: self-hosted
     steps:
-      - name: Install Nginx
-        run: sudo apt-get update && sudo apt-get install -y nginx
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: install Dependencies
+        run: npm install
+
+      - name: pm2 install
+        run: npm install pm2 -g
+
+      - name: Deploy to server 
+        run: |
+          pm2 restart "server" || true
+          pm2 start "npm start" --name="server"
