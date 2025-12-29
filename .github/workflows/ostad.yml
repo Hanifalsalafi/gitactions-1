@@ -19,9 +19,14 @@ jobs:
     - name: install Dependencies
       run: npm install
 
-  Deploy:
+  build:
     runs-on: self-hosted
     needs: Test
+    
+
+  Deploy:
+    runs-on: self-hosted
+    needs: build
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
